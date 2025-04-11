@@ -1,12 +1,11 @@
-import logo from './logo.svg';
-import './App.css';
-import TravelRequests from "./components/TravelRequests";
+import React from "react";
+import TravelRequests from "./TravelRequests";
 
 function App() {
   return (
     <div className="App">
-    <h1>Dashboard</h1>
-    <TravelRequests />
+      <h1>Travel Request System</h1>
+      <TravelRequests />
     </div>
   );
 }
