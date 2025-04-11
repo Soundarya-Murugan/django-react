@@ -1,3 +1,8 @@
 from django.db import models
 
-# Create your models here.
+class TravelRequest(models.Model):
+    destination = models.CharField(max_length=100)
+    date = models.DateField()
+
+    def __str__(self):
+        return f"{self.destination} on {self.date}"
