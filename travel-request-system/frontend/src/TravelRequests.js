@@ -9,7 +9,7 @@ const TravelRequests = () => {
     date: '',
   });
 
-  // Fetch travel requests
+
   useEffect(() => {
     axios.get('http://localhost:8000/api/requests/')
       .then(res => setRequests(res.data))
@@ -26,7 +26,7 @@ const TravelRequests = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (formData.id) {
-      // Update existing request
+      
       axios.put(`http://localhost:8000/api/requests/${formData.id}/`, formData)
         .then(res => {
           const updatedRequests = requests.map(req => req.id === res.data.id ? res.data : req);
@@ -35,7 +35,7 @@ const TravelRequests = () => {
         })
         .catch(err => console.error(err));
     } else {
-      // Create new request
+      
       axios.post('http://localhost:8000/api/requests/', formData)
         .then(res => {
           setRequests([...requests, res.data]);

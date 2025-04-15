@@ -6,7 +6,7 @@ const Register = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
-    role: 'user', // default role
+    role: 'user', 
   });
 
   const handleChange = (e) =>

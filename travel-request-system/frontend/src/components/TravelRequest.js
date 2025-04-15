@@ -26,12 +26,12 @@ const TravelRequest = () => {
       id: Date.now(), // ✅ Unique ID
       ...formData,
       submittedBy: localStorage.getItem('currentUser'),
-      status: 'Pending', // ✅ Default status
+      status: 'Pending', 
     };
 
     const updatedRequests = [...requests, newRequest];
     localStorage.setItem('travelRequests', JSON.stringify(updatedRequests));
-    setRequests(updatedRequests); // update state to reflect new data
+    setRequests(updatedRequests); 
     alert('Travel request submitted!');
 
     setFormData({
