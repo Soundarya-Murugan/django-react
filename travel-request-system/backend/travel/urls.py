@@ -1,6 +1,10 @@
-from django.urls import path
-from .views import TravelRequestListCreate
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views import TravelRequestViewSet
+
+router = DefaultRouter()
+router.register(r'requests', TravelRequestViewSet, basename='travelrequest')
 
 urlpatterns = [
-    path('requests/', TravelRequestListCreate.as_view(), name='travel-requests'),
+    path('', include(router.urls)),
 ]
