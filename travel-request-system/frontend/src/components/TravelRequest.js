@@ -45,7 +45,7 @@ const TravelRequest = () => {
 
   return (
     <div className="form-container">
-      <h2>Submit Travel Request</h2>
+      <h2 className='text-table' style={{ marginBottom: '20px' }}>Submit Travel Request</h2>
       <form onSubmit={handleSubmit}>
         <input
           name="employeeName"
@@ -86,21 +86,36 @@ const TravelRequest = () => {
       </form>
 
       <hr />
-      <h3>Submitted Travel Requests</h3>
-      {requests.length === 0 ? (
-        <p>No travel requests yet.</p>
-      ) : (
-        <ul>
-          {requests.map((req) => (
-            <li key={req.id}>
-              <strong>{req.employeeName}</strong> → {req.destination} | Purpose: {req.travelPurpose} <br />
-              Dates: {req.travelDate} to {req.returnDate} <br />
-              Submitted by: {req.submittedBy} <br />
-              ✅ Status: <strong>{req.status}</strong>
-            </li>
+    {requests.length === 0 ? (
+      <p>No travel requests yet.</p>
+    ) : (
+      <table className="request-table">
+        <thead>
+          <tr>
+            <th>Employee Name</th>
+            <th>Destination</th>
+            <th>Purpose</th>
+            <th>Travel Date</th>
+            <th>Return Date</th>
+            <th>Submitted By</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {requests.map((req, index) => (
+            <tr key={index}>
+              <td>{req.employeeName}</td>
+              <td>{req.destination}</td>
+              <td>{req.travelPurpose}</td>
+              <td>{req.travelDate}</td>
+              <td>{req.returnDate}</td>
+              <td>{req.submittedBy}</td>
+              <td>{req.status || 'Pending'}</td>
+            </tr>
           ))}
-        </ul>
-      )}
+        </tbody>
+      </table>
+    )}
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import '../style.css'
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
@@ -14,23 +15,24 @@ const Login = () => {
     if (user) {
       localStorage.setItem('currentUser', user.email);
       localStorage.setItem('role', user.role);
-      if (user.role === 'admin') {
-        navigate('/admin-requests');
-      } else {
-        navigate('/travel-request');
-      }
+      user.role === 'admin' ? navigate('/admin-requests') : navigate('/travel-request');
     } else {
       alert('Invalid credentials!');
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Login</h2>
-      <input name="email" placeholder="Email" onChange={handleChange} required />
-      <input name="password" type="password" placeholder="Password" onChange={handleChange} required />
-      <button type="submit">Login</button>
-    </form>
+    <div className="form-container">
+      <form onSubmit={handleSubmit} className="form-box">
+        <h2>Login</h2>
+        <input name="email" placeholder="Email" onChange={handleChange} required />
+        <input name="password" type="password" placeholder="Password" onChange={handleChange} required />
+        <button type="submit">Login</button>
+        <p className="text-center">
+          Don't have an account? <Link to="/register">Register here</Link>
+        </p>
+      </form>
+    </div>
   );
 };
 
